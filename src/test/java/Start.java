@@ -2,7 +2,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 public class Start {
     WebDriver wd;
@@ -19,6 +22,50 @@ public class Start {
         wd.close();
         wd.quit();
 
+    }
+
+    @Test
+    public  void  Trello1(){
+        wd = new ChromeDriver();
+        wd.navigate().to("https://trello.com/");
+        wd.manage().window().maximize();
+
+
+
+
+    }
+
+
+
+
+
+    @Test
+    public void tableTest(){
+        // проверить правда ли в таблице 4 строки
+
+        List<WebElement> rows = wd.findElements(By.cssSelector("tr"));
+        //wd.findElements(By.xpath("//tr"));
+        Assert.assertEquals(rows.size(),4);
+
+        // правда ли что последння строка сожержит строку Mexico
+        WebElement lastRow = wd.findElement(By.cssSelector("tr:last-child"));
+    //    wd.findElement(By.xpath("//tr[last()]"));
+        String text = lastRow.getText();
+        System.out.println(text);
+        //   "Poland Chine Mexico" contains "Mexico"
+        Assert.assertTrue(text.contains("Mexico"));
+// правда ли что последняя ячейка сожержит строку Mexico
+        WebElement lastCell = wd.findElement(By.cssSelector("tr:last-child td:last-child"));
+        //wd.findElement(By.xpath("//tr[last()]//td[last()]"));
+        String str = lastCell.getText();
+        boolean res =str.contains("Mexico");
+        Assert.assertTrue(str.contains("Mexico"));
+        Assert.assertTrue(res);
+
+        //print Maria Anders
+        System.out.println(wd.findElement(By.cssSelector("tr:nth-child(2) td:nth-child(2)")));
+//wd.findElement(By.xpath("//tr[2]//tf[2]"))
+      //  wd.findElement(By.xpath("//td[text() ='Maria Anders']"));
     }
 
     WebElement el1 = wd.findElement(By.tagName("div"));
