@@ -41,7 +41,7 @@ public class Login {
 
         WebElement submitLogin = wd.findElement(By.cssSelector("#login-submit"));
         submitLogin.click();
-
+        System.out.println("Wow I got it");
        /* Thread.sleep(2000);
         WebElement logOutButton = wd.findElement(By.xpath("//*[@class ='yRPuNUIoZpQWwj']"));
         logOutButton.click();
