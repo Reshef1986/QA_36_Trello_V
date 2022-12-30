@@ -20,30 +20,46 @@ public class Login {
     }
 
     @Test
-    public void trello1() {
+    public void trello1() throws InterruptedException {
         WebElement loginButton = wd.findElement(By.cssSelector("[href='/login']"));
         loginButton.click();//click the Login button
 
         WebElement emailField = wd.findElement(By.cssSelector("#user"));
         emailField.click();
         emailField.clear();
-        emailField.sendKeys("reshef1986@gmail.com");
+        emailField.sendKeys("zaxarovalexandr1986@gmail.com");
+
 
         WebElement logButton = wd.findElement(By.cssSelector("#login"));
-        loginButton.click();
+        logButton.click();
 
+        Thread.sleep(2000);
         WebElement passwordInput = wd.findElement(By.cssSelector("#password"));
         passwordInput.click();
         passwordInput.clear();
-        passwordInput.sendKeys("12345");
+        passwordInput.sendKeys("RESHEF326943081reshef");
 
         WebElement submitLogin = wd.findElement(By.cssSelector("#login-submit"));
         submitLogin.click();
 
+       /* Thread.sleep(2000);
+        WebElement logOutButton = wd.findElement(By.xpath("//*[@class ='yRPuNUIoZpQWwj']"));
+        logOutButton.click();
+        Thread.sleep(2000);
+        WebElement out = wd.findElement(By.xpath("//*[@data-testid='header-member-menu-logout']"));
+out.click();
+
+        */
     }
 
     @Test
-    public  void  logOut(){
+    public void logOut() {
+        WebElement logOutButton = wd.findElement(By.cssSelector(".yRPuNUIoZpQWwj"));
+        logOutButton.click();
+        //wd.findElement(By.xpath("//*[@class ='yRPuNUIoZpQWwj'"));
+        WebElement out = wd.findElement(By.cssSelector("[data-testid='header-member-menu-logout']"));
+        //wd.findElement(By.xpath("//*[@data-testid='header-member-menu-logout']"));
+        out.click();
 
     }
 
